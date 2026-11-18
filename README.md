@@ -63,8 +63,10 @@ That's all. There are no Python packages to install.
 **Step 1: copy an example.**
 
 ```sh
-cp examples/small-office.mmd my-network.mmd         # Windows: copy examples\small-office.mmd my-network.mmd
+cp examples/small-office.mmd my-network.mmd
 ```
+
+On Windows: `copy examples\small-office.mmd my-network.mmd`
 
 **Step 2: open `my-network.mmd` in any text editor.** It looks like this (shortened):
 
@@ -88,9 +90,11 @@ Change a label, add a node, or add a connection.
 **Step 3: build it.**
 
 ```sh
-python3 build.py my-network.mmd           # writes my-network.svg   (Windows: py build.py my-network.mmd)
+python3 build.py my-network.mmd           # writes my-network.svg
 python3 build.py my-network.mmd -f png    # writes my-network.png
 ```
+
+(On Windows, type `py` instead of `python3`.)
 
 **Step 4: look at it.** Open the file in a web browser or image viewer
 (`xdg-open my-network.svg` on Linux, `open my-network.svg` on macOS, `start my-network.svg` on Windows).
@@ -110,7 +114,8 @@ python3 build.py my-network.mmd -f png    # writes my-network.png
 | group things in a coloured zone | add `:::zone-blue` after the node (see colours below) |
 | connect two nodes | `A --- B` |
 | lay the diagram out left to right | start the file with `flowchart LR` instead of `flowchart TB` |
-| label a connection | `A ---\|Encrypted<br/>Replication\| B` |
+
+To label a connection, put text between bars: `A ---|Encrypted<br/>Replication| B` (use `<br/>` for a line break).
 
 Zone colours: 🟦 `blue`, 🟧 `orange`, 🟥 `red`, 🟩 `green`, 🟪 `purple`, ⬜ `gray`.
 Use `---` (plain line). `-->` draws an arrowhead.
