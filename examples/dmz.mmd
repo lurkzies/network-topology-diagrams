@@ -1,0 +1,17 @@
+flowchart TB
+    Internet@{ img: "icon:cloud", label: "Internet" }
+    RTR@{ img: "icon:router", label: "Border Router" }
+    FW@{ img: "icon:firewall", label: "Perimeter Firewall" }
+    DMZ@{ img: "icon:rack", label: "DMZ\nPublic Web Servers" }:::zone-blue
+    SW@{ img: "icon:switch", label: "Internal Switch" }
+    APP@{ img: "icon:server", label: "Application Tier" }:::zone-red
+    DB@{ img: "icon:database", label: "Database Tier" }:::zone-purple
+    USR@{ img: "icon:pc", label: "User Network" }:::zone-orange
+
+    Internet --- RTR
+    RTR --- FW
+    FW --- DMZ
+    FW --- SW
+    SW --- APP
+    SW --- DB
+    SW --- USR

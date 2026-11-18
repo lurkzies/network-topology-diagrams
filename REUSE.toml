@@ -1,0 +1,14 @@
+version = 1
+
+# Later annotations take precedence over earlier ones, so the general rule comes first.
+[[annotations]]
+path = "**"
+precedence = "closest"
+SPDX-FileCopyrightText = "2026 network-topology-diagrams contributors"
+SPDX-License-Identifier = "MIT"
+
+[[annotations]]
+path = ["icons/router.svg", "icons/switch.svg", "icons/firewall.svg", "icons/server.svg", "icons/rack.svg"]
+precedence = "override"
+SPDX-FileCopyrightText = "Red Hat, Inc. and the networking-icons contributors (modified: recoloured)"
+SPDX-License-Identifier = "Apache-2.0"

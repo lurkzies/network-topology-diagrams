@@ -1,0 +1,12 @@
+{
+  "theme": "base",
+  "htmlLabels": false,
+  "flowchart": { "htmlLabels": false, "curve": "linear", "nodeSpacing": 60, "rankSpacing": 70 },
+  "themeVariables": {
+    "fontFamily": "Noto Sans, Segoe UI, Helvetica Neue, Helvetica, Arial, sans-serif",
+    "fontSize": "16px",
+    "lineColor": "#1f2937",
+    "edgeLabelBackground": "#ffffff",
+    "tertiaryColor": "#ffffff"
+  }
+}

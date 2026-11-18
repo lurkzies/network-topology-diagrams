@@ -1,0 +1,8 @@
+node_modules/
+__pycache__/
+*.pyc
+.DS_Store
+Thumbs.db
+# local scratch output (committed examples live in examples/)
+/out/
+*.pdf

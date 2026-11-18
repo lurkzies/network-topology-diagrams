@@ -1,0 +1,16 @@
+{
+  "name": "network-topology-diagrams",
+  "version": "0.1.0",
+  "private": true,
+  "description": "Cisco-style network diagrams from plain Mermaid sources",
+  "license": "MIT",
+  "engines": {
+    "node": ">=22.13.0"
+  },
+  "devDependencies": {
+    "@mermaid-js/mermaid-cli": "12.2.0"
+  },
+  "allowScripts": {
+    "puppeteer@25.18.1": true
+  }
+}

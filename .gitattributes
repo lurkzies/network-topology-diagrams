@@ -1,0 +1,4 @@
+* text=auto eol=lf
+*.png binary
+examples/*.svg linguist-generated=true
+examples/*.png linguist-generated=true

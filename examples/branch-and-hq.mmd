@@ -1,0 +1,23 @@
+flowchart TB
+    WAN@{ img: "icon:cloud", label: "WAN / VPN" }
+    HQR@{ img: "icon:router", label: "HQ Router" }
+    BRR@{ img: "icon:router", label: "Branch Router" }
+    HQFW@{ img: "icon:firewall", label: "HQ Firewall" }
+    HQSW@{ img: "icon:switch", label: "HQ Core Switch" }
+    HQSRV@{ img: "icon:rack", label: "Data Centre\nApplication Servers" }:::zone-blue
+    HQDB@{ img: "icon:database", label: "Databases\nEncrypted" }:::zone-purple
+    HQPC@{ img: "icon:pc", label: "HQ Staff\n150 users" }:::zone-orange
+    BRSW@{ img: "icon:switch", label: "Branch Switch" }
+    BRPC@{ img: "icon:pc", label: "Branch Staff\n12 users" }:::zone-green
+    BRAP@{ img: "icon:ap", label: "Branch Wi-Fi" }:::zone-green
+
+    WAN --- HQR
+    WAN --- BRR
+    HQR --- HQFW
+    HQFW --- HQSW
+    HQSW --- HQSRV
+    HQSW --- HQDB
+    HQSW --- HQPC
+    BRR --- BRSW
+    BRSW --- BRPC
+    BRSW --- BRAP

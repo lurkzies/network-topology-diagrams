@@ -1,0 +1,15 @@
+flowchart TB
+    Internet@{ img: "icon:cloud", label: "Internet" }
+    RTR@{ img: "icon:router", label: "Edge Router\nISP uplink" }
+    FW@{ img: "icon:firewall", label: "Firewall" }
+    SW@{ img: "icon:switch", label: "Office Switch" }
+    SRV@{ img: "icon:server", label: "File Server\nBackups" }:::zone-blue
+    PCS@{ img: "icon:pc", label: "Staff PCs\n20 users" }:::zone-orange
+    AP@{ img: "icon:ap", label: "Wi-Fi\nAccess Point" }:::zone-green
+
+    Internet --- RTR
+    RTR --- FW
+    FW --- SW
+    SW --- SRV
+    SW --- PCS
+    SW --- AP
