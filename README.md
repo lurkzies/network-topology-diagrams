@@ -241,8 +241,10 @@ This is an early (v0.1.0) release. Please read this before relying on it:
 
 - **Tested by hand:** Linux only (Python 3.14, Node 26, mermaid-cli 12.2.0), including a fresh-clone install, the four examples, error
   messages, and compiling the output with Typst 0.15.1.
-- **Not tested by hand:** **Windows and macOS.** The instructions for them are written from documentation, not experience. The CI workflow
-  is meant to build the examples on both, but treat those platforms as unverified until you've run it yourself, and please report problems.
+- **Verified by CI, not by hand:** Windows and macOS. A GitHub Actions workflow builds and checks every example on Windows, macOS and
+  Ubuntu with Python 3.9 and 3.13, and compiles the Typst example. The Windows and macOS output was compared with the Linux output
+  (same size, only anti-aliasing differences). The install instructions for those systems were written from documentation, so please
+  report any problems.
 - **Not tested:** opening the SVGs in Word, LibreOffice, Inkscape, Illustrator or other editors (use the PNG if an SVG looks wrong);
   Python 3.9 to 3.13 and other Node versions beyond the minimums stated; non-ASCII or space-containing paths on Windows; very long labels
   (caption width is estimated, so boxes can be a little tight or loose); and other Typst versions.
