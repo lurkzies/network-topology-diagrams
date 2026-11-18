@@ -1,0 +1,6 @@
+<!-- Modified from Tabler Icons "phone" (MIT, Copyright (c) 2020-2026 Pawel Kuna): recoloured to #049FD9, stroke width 1.75. See icons/NOTICE.md. -->
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+<g fill="none" stroke="#049FD9" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round">
+  <path d="M5 4h4l2 5l-2.5 1.5a11 11 0 0 0 5 5l1.5 -2.5l5 2v4a2 2 0 0 1 -2 2a16 16 0 0 1 -15 -15a2 2 0 0 1 2 -2" />
+</g>
+</svg>

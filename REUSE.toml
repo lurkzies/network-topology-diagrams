@@ -12,3 +12,9 @@ path = ["icons/router.svg", "icons/switch.svg", "icons/firewall.svg", "icons/ser
 precedence = "override"
 SPDX-FileCopyrightText = "Red Hat, Inc. and the networking-icons contributors (modified: recoloured)"
 SPDX-License-Identifier = "Apache-2.0"
+
+[[annotations]]
+path = ["icons/printer.svg", "icons/laptop.svg", "icons/phone.svg", "icons/lock.svg", "icons/building.svg", "icons/users.svg"]
+precedence = "override"
+SPDX-FileCopyrightText = "2020-2026 Pawel Kuna (Tabler Icons); modified: recoloured"
+SPDX-License-Identifier = "MIT"

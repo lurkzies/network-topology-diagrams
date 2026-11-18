@@ -1,122 +1,229 @@
-# network-topology-diagrams
+<h1 align="center">network-topology-diagrams</h1>
 
-Draw clean, Cisco-style network diagrams from a few lines of [Mermaid](https://mermaid.js.org/) text.
-You write the topology; the tool adds flat network icons, captions and coloured zone boxes, and gives you an
-SVG or PNG you can drop into Typst, LaTeX, Word, slides or a README.
+<p align="center">
+  <b>Draw clean, Cisco-style network diagrams from a few lines of text.</b><br>
+  Write the topology, get a polished SVG or PNG with icons, captions and coloured zones.
+</p>
 
-![Branch and HQ example](examples/branch-and-hq.png)
+<p align="center">
+  <img alt="License: MIT" src="https://img.shields.io/badge/code-MIT-blue">
+  <img alt="Icons: open licences" src="https://img.shields.io/badge/icons-MIT%20%2F%20Apache--2.0-blue">
+  <img alt="Node 22.13+" src="https://img.shields.io/badge/node-%E2%89%A522.13-339933">
+  <img alt="Python 3.9+" src="https://img.shields.io/badge/python-%E2%89%A53.9-3776AB">
+</p>
 
-```text
-flowchart TB
-    WAN@{ img: "icon:cloud",  label: "WAN / VPN" }
-    HQR@{ img: "icon:router", label: "HQ Router" }
-    HQPC@{ img: "icon:pc",    label: "HQ Staff\n150 users" }:::zone-orange
+<p align="center">
+  <img src="examples/branch-and-hq.png" alt="Example: head office and branch connected over a WAN" width="640">
+</p>
 
-    WAN --- HQR
-    HQR --- HQPC
-```
+- **Text in, diagram out.** Diagrams are plain-text files you can keep in git and diff.
+- **No drawing skills needed.** Icons, spacing and colours are handled for you.
+- **Use it anywhere.** SVG and PNG open in browsers, Word, slides, LaTeX, [Typst](https://typst.app/) and more.
+- **Open and free.** MIT code and openly licensed icons. Nothing to sign up for, nothing leaves your machine.
 
-## Requirements
+[Install](#1-install) · [Your first diagram](#2-your-first-diagram) · [Cheat sheet](#3-cheat-sheet) · [Icons](#icons) · [Examples](#examples) · [Troubleshooting](#troubleshooting)
 
-| Tool | Version | Why |
+---
+
+## 1. Install
+
+You need two free tools (check with `node --version` and `python3 --version`):
+
+| Tool | Version | Get it |
 | --- | --- | --- |
-| [Node.js](https://nodejs.org/) | 22.13 or newer | runs [mermaid-cli](https://github.com/mermaid-js/mermaid-cli) (which downloads its own Chromium) |
-| [Python](https://www.python.org/) | 3.9 or newer | runs `build.py` (standard library only, nothing to `pip install`) |
+| Node.js | 22.13 or newer | [nodejs.org](https://nodejs.org/) |
+| Python | 3.9 or newer | [python.org](https://www.python.org/downloads/) (Windows) or your package manager |
 
-Works on Linux, macOS and Windows.
-
-## Quick start
-
-**Linux / macOS**
+<details open>
+<summary><b>Linux / macOS</b></summary>
 
 ```sh
 git clone https://github.com/<you>/network-topology-diagrams.git
 cd network-topology-diagrams
-npm install                                   # installs mermaid-cli
-python3 build.py examples/small-office.mmd    # -> examples/small-office.svg
+npm install        # downloads the renderer (about 150 MB, includes a headless browser)
 ```
+</details>
 
-**Windows (PowerShell)**
+<details>
+<summary><b>Windows (PowerShell)</b></summary>
 
 ```powershell
 git clone https://github.com/<you>/network-topology-diagrams.git
 cd network-topology-diagrams
 npm install
-py build.py examples\small-office.mmd
 ```
 
-No `npm install`? `build.py` also finds a global `mmdc`, or falls back to `npx`, which downloads
-mermaid-cli on first use.
+On Windows use `py` instead of `python3` in every command below.
+</details>
 
-Then copy an example, edit it, and rebuild:
+That's all. There are no Python packages to install.
+
+## 2. Your first diagram
+
+**Step 1: copy an example.**
 
 ```sh
-python3 build.py my-network.mmd                 # SVG next to the source
-python3 build.py my-network.mmd -f png -s 3     # PNG at 3x resolution
-python3 build.py examples/ --outdir out         # every .mmd in a folder
-python3 build.py --list-icons
+cp examples/small-office.mmd my-network.mmd         # Windows: copy examples\small-office.mmd my-network.mmd
 ```
 
-## Writing a diagram
-
-A diagram is an ordinary Mermaid `flowchart`. Declare nodes with an icon and connect them with `---`:
+**Step 2: open `my-network.mmd` in any text editor.** It looks like this (shortened):
 
 ```text
-ID@{ img: "icon:NAME", label: "Bold title\nGrey detail line" }
-ID@{ img: "icon:rack", label: "DMZ\nWeb Servers" }:::zone-blue
+flowchart TB
+    Internet@{ img: "icon:cloud", label: "Internet" }
+    RTR@{ img: "icon:router", label: "Edge Router\nISP uplink" }
+    FW@{ img: "icon:firewall", label: "Firewall" }
+    SW@{ img: "icon:switch", label: "Office Switch" }
+    PCS@{ img: "icon:pc", label: "Staff PCs\n20 users" }:::zone-orange
+
+    Internet --- RTR
+    RTR --- FW
+    FW --- SW
+    SW --- PCS
 ```
 
-- **Icons** (see [`icons/README.md`](icons/README.md)): `router` `switch` `firewall` `server` `rack` `cloud` `pc` `database` `ap`.
-- **Labels**: the first line is bold, further lines are grey. Separate lines with `\n`.
-- **Zones**: add `:::zone-<colour>` for a dashed, tinted box around a node. Colours: `blue` `orange` `red` `green` `purple` `gray`.
-- **Links**: use `---` for plain lines. `-->` adds arrowheads, and `---|text|` adds a link label (keep it short or use `<br/>`).
-- **Direction**: `flowchart TB` (top to bottom) or `LR` (left to right). Everything else in Mermaid flowcharts still works.
+Each node line is `ID@{ img: "icon:<name>", label: "..." }`. The lines at the bottom connect nodes by ID with `---`.
+Change a label, add a node, or add a connection.
 
-Plain Mermaid nodes can be mixed with icon nodes, but they won't get the Cisco look.
+**Step 3: build it.**
 
-### Add your own icon
+```sh
+python3 build.py my-network.mmd           # writes my-network.svg   (Windows: py build.py my-network.mmd)
+python3 build.py my-network.mmd -f png    # writes my-network.png
+```
 
-Put an SVG with a `viewBox` in `icons/` (for example `icons/printer.svg`) and use `icon:printer`.
-Single-colour flat icons in `#049FD9` match the set. Contributed icons must be under a licence
-compatible with this repo; see [CONTRIBUTING.md](CONTRIBUTING.md).
+**Step 4: look at it.** Open the file in a web browser or image viewer
+(`xdg-open my-network.svg` on Linux, `open my-network.svg` on macOS, `start my-network.svg` on Windows).
 
-### Change the look
+**Step 5: repeat.** Edit, rebuild, refresh. Typical builds take a few seconds.
+
+<p align="center">
+  <img src="examples/small-office.png" alt="The small office example" width="300">
+</p>
+
+## 3. Cheat sheet
+
+| I want to... | Write this |
+| --- | --- |
+| add a device | `ID@{ img: "icon:router", label: "Title" }` |
+| add a second, grey line of detail | `label: "Title\nDetail"` (separate lines with `\n`) |
+| group things in a coloured zone | add `:::zone-blue` after the node (see colours below) |
+| connect two nodes | `A --- B` |
+| lay the diagram out left to right | start the file with `flowchart LR` instead of `flowchart TB` |
+| label a connection | `A ---\|Encrypted<br/>Replication\| B` |
+
+Zone colours: 🟦 `blue`, 🟧 `orange`, 🟥 `red`, 🟩 `green`, 🟪 `purple`, ⬜ `gray`.
+Use `---` (plain line). `-->` draws an arrowhead.
+This is regular [Mermaid flowchart](https://mermaid.js.org/syntax/flowchart.html) syntax, so everything else from
+Mermaid works too.
+
+Useful commands:
+
+```sh
+python3 build.py my-network.mmd -f png -s 3    # sharper PNG (3x resolution), good for printing
+python3 build.py examples/ --outdir out        # build every diagram in a folder
+python3 build.py --list-icons                  # show the icon names
+```
+
+## Icons
+
+Fifteen flat icons in Cisco blue, all under open licences (MIT or Apache-2.0). Use them as `icon:<name>`.
+
+<table align="center">
+  <tr align="center">
+    <td><img src="icons/cloud.svg" height="56"><br><code>cloud</code></td>
+    <td><img src="icons/router.svg" height="56"><br><code>router</code></td>
+    <td><img src="icons/switch.svg" height="56"><br><code>switch</code></td>
+    <td><img src="icons/firewall.svg" height="56"><br><code>firewall</code></td>
+    <td><img src="icons/lock.svg" height="56"><br><code>lock</code></td>
+  </tr>
+  <tr align="center">
+    <td><img src="icons/rack.svg" height="56"><br><code>rack</code></td>
+    <td><img src="icons/server.svg" height="56"><br><code>server</code></td>
+    <td><img src="icons/database.svg" height="56"><br><code>database</code></td>
+    <td><img src="icons/building.svg" height="56"><br><code>building</code></td>
+    <td><img src="icons/ap.svg" height="56"><br><code>ap</code></td>
+  </tr>
+  <tr align="center">
+    <td><img src="icons/pc.svg" height="56"><br><code>pc</code></td>
+    <td><img src="icons/laptop.svg" height="56"><br><code>laptop</code></td>
+    <td><img src="icons/phone.svg" height="56"><br><code>phone</code></td>
+    <td><img src="icons/printer.svg" height="56"><br><code>printer</code></td>
+    <td><img src="icons/users.svg" height="56"><br><code>users</code></td>
+  </tr>
+</table>
+
+Missing one? Drop an SVG into `icons/` and use it as `icon:<its-file-name>`. See [`icons/README.md`](icons/README.md)
+for how, plus the licence of each icon, and [`icons/NOTICE.md`](icons/NOTICE.md) for credits to
+[Red Hat Ansible's networking-icons](https://github.com/network-automation/networking-icons) (Apache-2.0)
+and [Tabler Icons](https://github.com/tabler/tabler-icons) (MIT).
+
+## Examples
+
+Every diagram below is built from a short source file in [`examples/`](examples/). Copy one to get started.
+
+<table>
+  <tr>
+    <td align="center" width="50%">
+      <img src="examples/small-office.png" alt="Small office" width="260"><br>
+      <b>Small office</b><br><a href="examples/small-office.mmd"><code>small-office.mmd</code></a>
+    </td>
+    <td align="center" width="50%">
+      <img src="examples/dmz.png" alt="DMZ" width="330"><br>
+      <b>Perimeter firewall with a DMZ</b><br><a href="examples/dmz.mmd"><code>dmz.mmd</code></a>
+    </td>
+  </tr>
+  <tr>
+    <td align="center">
+      <img src="examples/branch-and-hq.png" alt="Branch and head office" width="330"><br>
+      <b>Head office and branch over a WAN</b><br><a href="examples/branch-and-hq.mmd"><code>branch-and-hq.mmd</code></a>
+    </td>
+    <td align="center">
+      <img src="examples/remote-access.png" alt="Remote access" width="230"><br>
+      <b>Remote access through a VPN gateway</b><br><a href="examples/remote-access.mmd"><code>remote-access.mmd</code></a>
+    </td>
+  </tr>
+</table>
+
+## Using your diagram
+
+SVG stays sharp at any size; PNG is the safest choice for slides and Word.
+
+- **Web, slides, Word, LaTeX:** insert the SVG or PNG like any picture.
+- **Typst:** `#image("my-network.svg", width: 80%)`. See [`examples/example.typ`](examples/example.typ). For tall diagrams, set a
+  height instead (`height: 20cm`) so it fits the page.
+- **Markdown / GitHub:** `![My network](my-network.png)`.
+
+## Make it yours
 
 - Icon size, zone colours and the caption font are the constants at the top of [`build.py`](build.py).
-- Layout (spacing, line style) is in [`mermaid.json`](mermaid.json). **Keep `"htmlLabels": false`**: HTML labels
-  render as blank in Typst and many other SVG viewers, and the build fails if it detects them.
-
-## Using the output in Typst
-
-```typ
-#figure(image("examples/small-office.svg", width: 70%), caption: [Small office network])
-```
-
-Tall diagrams may overflow a page at full width. Constrain the height instead, e.g. `image("x.svg", height: 20cm)`.
-A working file is in [`examples/example.typ`](examples/example.typ).
+- Spacing and line style are in [`mermaid.json`](mermaid.json). Keep `"htmlLabels": false`, because HTML labels
+  don't render in Typst and many other SVG viewers (the build stops with an error if it finds them).
 
 ## Troubleshooting
 
 - **`mermaid-cli not found`**: run `npm install` in this folder (needs Node.js 22.13+).
-- **`Could not find chrome-headless-shell`**: the browser that mermaid-cli renders with wasn't downloaded. Newer npm versions
+- **`Could not find chrome-headless-shell`**: the browser the renderer uses wasn't downloaded. Newer npm versions
   block dependency install scripts unless the project approves them; this repo approves puppeteer in `package.json`
-  (`allowScripts`), but a global npm setting such as `ignore-scripts=true` can still block it. Fix it with
+  (`allowScripts`), but a global setting such as `ignore-scripts=true` can still block it. Fix it with
   `npx puppeteer browsers install chrome-headless-shell` (the command Puppeteer itself suggests) and re-run.
-- **Linux: `Failed to launch the browser process` / `No usable sandbox`**: Chromium's sandbox is blocked, which is common
+- **Linux: `Failed to launch the browser process` or `No usable sandbox`**: Chromium's sandbox is blocked, which is common
   in containers, as root, or on Ubuntu 23.10+ with AppArmor restrictions. mermaid-cli's
   [guidance](https://github.com/mermaid-js/mermaid-cli/blob/master/docs/linux-sandbox-issue.md) is not to run as root and to
   update your kernel. As a last resort, run with `--no-sandbox` (or set `MMDC_NO_SANDBOX=1`), which disables a security feature.
-- **Text looks different or boxes are slightly too wide/narrow**: captions use `Noto Sans`, then `Segoe UI`, `Helvetica Neue`,
-  `Helvetica`, `Arial`. Install Noto Sans for identical output across machines.
+- **`unknown icon "..."`**: the message lists the valid names; check spelling with `--list-icons`.
+- **Text looks different or boxes are slightly too wide or narrow**: captions use `Noto Sans`, then `Segoe UI`, `Helvetica Neue`,
+  `Helvetica`, `Arial`. Install [Noto Sans](https://fonts.google.com/noto/specimen/Noto+Sans) for identical output on every machine.
 - **Windows: `python` is not found**: use the `py` launcher (`py build.py ...`).
-- **Labels disappear in the SVG**: you've enabled HTML labels; see "Change the look".
+- **Arrowheads appear on lines**: use `---`, not `-->`.
 
-## Licence
+## Contributing and licence
 
-Code, documentation and the four original icons are [MIT](LICENSE). The router, switch, firewall, server and rack
-icons are derived from [network-automation/networking-icons](https://github.com/network-automation/networking-icons)
-and remain under the [Apache License 2.0](LICENSES/Apache-2.0.txt); see [`icons/NOTICE.md`](icons/NOTICE.md).
-The repo follows the [REUSE](https://reuse.software/) specification.
+Contributions are welcome: see [CONTRIBUTING.md](CONTRIBUTING.md) and the [Code of Conduct](CODE_OF_CONDUCT.md).
 
-"Cisco" is a trademark of Cisco Systems, Inc.; this project is independent, not affiliated with or endorsed by Cisco,
+Code, docs and the original icons are [MIT](LICENSE). The router, switch, firewall, server and rack icons come from
+networking-icons and remain [Apache-2.0](LICENSES/Apache-2.0.txt); the Tabler-derived icons remain MIT. Details are in
+[`icons/NOTICE.md`](icons/NOTICE.md), and the repo follows the [REUSE](https://reuse.software/) specification.
+
+"Cisco" is a trademark of Cisco Systems, Inc. This project is independent, not affiliated with or endorsed by Cisco,
 and uses Cisco-*style* symbols only.

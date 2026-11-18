@@ -1,0 +1,7 @@
+<!-- Modified from Tabler Icons "device-laptop" (MIT, Copyright (c) 2020-2026 Pawel Kuna): recoloured to #049FD9, stroke width 1.75. See icons/NOTICE.md. -->
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+<g fill="none" stroke="#049FD9" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round">
+  <path d="M3 19l18 0" />
+  <path d="M5 7a1 1 0 0 1 1 -1h12a1 1 0 0 1 1 1v8a1 1 0 0 1 -1 1h-12a1 1 0 0 1 -1 -1l0 -8" />
+</g>
+</svg>

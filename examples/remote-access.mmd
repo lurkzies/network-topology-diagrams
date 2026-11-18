@@ -1,0 +1,17 @@
+flowchart TB
+    Internet@{ img: "icon:cloud", label: "Internet" }
+    LAP@{ img: "icon:laptop", label: "Remote Worker\nLaptop" }:::zone-green
+    MOB@{ img: "icon:phone", label: "Mobile Staff\nPhones" }:::zone-green
+    VPN@{ img: "icon:lock", label: "VPN Gateway\nMFA required" }
+    HQ@{ img: "icon:building", label: "Head Office" }
+    SW@{ img: "icon:switch", label: "Office Switch" }
+    USR@{ img: "icon:users", label: "Staff\n40 users" }:::zone-orange
+    PRN@{ img: "icon:printer", label: "Shared\nPrinters" }:::zone-blue
+
+    LAP --- Internet
+    MOB --- Internet
+    Internet --- VPN
+    VPN --- HQ
+    HQ --- SW
+    SW --- USR
+    SW --- PRN

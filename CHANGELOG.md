@@ -5,6 +5,13 @@ All notable changes to this project are documented here. The format follows
 
 ## [Unreleased]
 
+### Added
+- Six more open-licensed icons derived from Tabler Icons (MIT): printer, laptop, phone, lock, building, users.
+- `remote-access` example.
+
+### Changed
+- README rewritten as a step-by-step guide with an icon gallery and embedded examples.
+
 ## [0.1.0] - 2026-11-17
 
 ### Added
