@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-# SPDX-FileCopyrightText: 2026 network-topology-diagrams contributors
+# SPDX-FileCopyrightText: 2026 lurkzies
 # SPDX-License-Identifier: MIT
 """CI sanity checks: every example built to a non-empty SVG (inline icons and captions, no HTML labels) and PNG.
 

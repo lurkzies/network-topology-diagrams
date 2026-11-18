@@ -38,7 +38,7 @@ You need two free tools (check with `node --version` and `python3 --version`):
 <summary><b>Linux / macOS</b></summary>
 
 ```sh
-git clone https://github.com/<you>/network-topology-diagrams.git
+git clone https://github.com/lurkzies/network-topology-diagrams.git
 cd network-topology-diagrams
 npm install        # downloads the renderer (about 150 MB, includes a headless browser)
 ```
@@ -48,7 +48,7 @@ npm install        # downloads the renderer (about 150 MB, includes a headless b
 <summary><b>Windows (PowerShell)</b></summary>
 
 ```powershell
-git clone https://github.com/<you>/network-topology-diagrams.git
+git clone https://github.com/lurkzies/network-topology-diagrams.git
 cd network-topology-diagrams
 npm install
 ```

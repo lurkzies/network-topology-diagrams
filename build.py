@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-# SPDX-FileCopyrightText: 2026 network-topology-diagrams contributors
+# SPDX-FileCopyrightText: 2026 lurkzies
 # SPDX-License-Identifier: MIT
 """Build Cisco-style network diagrams from plain Mermaid flowchart sources.
 

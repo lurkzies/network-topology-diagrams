@@ -21,5 +21,5 @@ All notable changes to this project are documented here. The format follows
 - Three example diagrams and a Typst example.
 - MIT licence for code, Apache-2.0 for the derived icons, REUSE-compliant annotations, CI on Linux, macOS and Windows.
 
-[Unreleased]: https://github.com/<you>/network-topology-diagrams/compare/v0.1.0...HEAD
-[0.1.0]: https://github.com/<you>/network-topology-diagrams/releases/tag/v0.1.0
+[Unreleased]: https://github.com/lurkzies/network-topology-diagrams/compare/v0.1.0...HEAD
+[0.1.0]: https://github.com/lurkzies/network-topology-diagrams/releases/tag/v0.1.0

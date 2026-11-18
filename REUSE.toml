@@ -4,7 +4,7 @@ version = 1
 [[annotations]]
 path = "**"
 precedence = "closest"
-SPDX-FileCopyrightText = "2026 network-topology-diagrams contributors"
+SPDX-FileCopyrightText = "2026 lurkzies"
 SPDX-License-Identifier = "MIT"
 
 [[annotations]]
