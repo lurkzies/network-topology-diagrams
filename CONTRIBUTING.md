@@ -27,6 +27,11 @@ python3 scripts/check.py out
 - Add the file to `icons/README.md`, record its source and licence in `icons/NOTICE.md`, and add an annotation in `REUSE.toml` if it isn't MIT.
   CI runs `reuse lint`.
 
+## AI-assisted contributions
+
+AI-assisted contributions are fine. Please say so in the pull request, review and test everything yourself, and make sure any
+generated icons or text don't copy material under an incompatible licence.
+
 ## Licence of contributions
 
 By contributing you agree your work is licensed under this repository's licences (MIT for code and docs;

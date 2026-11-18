@@ -222,6 +222,19 @@ SVG stays sharp at any size; PNG is the safest choice for slides and Word.
 - **Windows: `python` is not found**: use the `py` launcher (`py build.py ...`).
 - **Arrowheads appear on lines**: use `---`, not `-->`.
 
+## AI usage disclosure
+
+This project was built with the help of an AI coding assistant, [Claude Code](https://claude.com/claude-code)
+(Anthropic, model Claude Sonnet 5.5), working under the direction of the maintainer. The AI wrote or drafted the code
+(`build.py`, `scripts/check.py`), the documentation, the example diagrams, the CI workflow and the four original icons
+(`cloud`, `pc`, `database`, `ap`), and it researched and recorded the licensing of the third-party icons. It also ran the
+checks described in the commit history: fresh-clone builds, `reuse lint`, and Typst rendering.
+
+Not AI-generated: the icon artwork derived from [networking-icons](https://github.com/network-automation/networking-icons)
+and [Tabler Icons](https://github.com/tabler/tabler-icons), which comes from those projects. Commits that include AI-written
+work carry a `Co-Authored-By` trailer. The maintainer is responsible for what is published here. Behaviour on Windows and macOS is
+verified only by the CI workflow, not by hand. If you find a mistake, please open an issue.
+
 ## Contributing and licence
 
 Contributions are welcome: see [CONTRIBUTING.md](CONTRIBUTING.md) and the [Code of Conduct](CODE_OF_CONDUCT.md).
