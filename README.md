@@ -235,6 +235,22 @@ and [Tabler Icons](https://github.com/tabler/tabler-icons), which comes from tho
 work carry a `Co-Authored-By` trailer. The maintainer is responsible for what is published here. Behaviour on Windows and macOS is
 verified only by the CI workflow, not by hand. If you find a mistake, please open an issue.
 
+## Project status and what has been tested
+
+This is an early (v0.1.0) release. Please read this before relying on it:
+
+- **Tested by hand:** Linux only (Python 3.14, Node 26, mermaid-cli 12.2.0), including a fresh-clone install, the four examples, error
+  messages, and compiling the output with Typst 0.15.1.
+- **Not tested by hand:** **Windows and macOS.** The instructions for them are written from documentation, not experience. The CI workflow
+  is meant to build the examples on both, but treat those platforms as unverified until you've run it yourself, and please report problems.
+- **Not tested:** opening the SVGs in Word, LibreOffice, Inkscape, Illustrator or other editors (use the PNG if an SVG looks wrong);
+  Python 3.9 to 3.13 and other Node versions beyond the minimums stated; non-ASCII or space-containing paths on Windows; very long labels
+  (caption width is estimated, so boxes can be a little tight or loose); and other Typst versions.
+- **Limits:** plain (non-icon) Mermaid nodes keep Mermaid's default look; the Tabler-derived icons are outline style and lighter than the
+  filled ones; `--no-sandbox` may be needed on Linux containers and some newer Ubuntu releases.
+
+The software is provided as is, without warranty (see [LICENSE](LICENSE)).
+
 ## Contributing and licence
 
 Contributions are welcome: see [CONTRIBUTING.md](CONTRIBUTING.md) and the [Code of Conduct](CODE_OF_CONDUCT.md).
