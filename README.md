@@ -246,7 +246,7 @@ This is an early (v0.1.0) release. Please read this before relying on it:
   (same size, only anti-aliasing differences). The install instructions for those systems were written from documentation, so please
   report any problems.
 - **Not tested:** opening the SVGs in Word, LibreOffice, Inkscape, Illustrator or other editors (use the PNG if an SVG looks wrong);
-  Python 3.9 to 3.13 and other Node versions beyond the minimums stated; non-ASCII or space-containing paths on Windows; very long labels
+  Python versions other than 3.9 and 3.13 (CI) and 3.14 (by hand), and Node versions other than 22 (CI) and 26 (by hand); non-ASCII or space-containing paths on Windows; very long labels
   (caption width is estimated, so boxes can be a little tight or loose); and other Typst versions.
 - **Limits:** plain (non-icon) Mermaid nodes keep Mermaid's default look; the Tabler-derived icons are outline style and lighter than the
   filled ones; `--no-sandbox` may be needed on Linux containers and some newer Ubuntu releases.
