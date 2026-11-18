@@ -17,4 +17,4 @@ Only the latest release receives fixes.
 
 - `--no-sandbox` (or `MMDC_NO_SANDBOX=1`) disables Chromium's sandbox. It's off by default; use it only when you must
   (containers, root) and only on diagrams you trust.
-- Dependencies are pinned in `package-lock.json`; Dependabot or manual updates should track mermaid-cli releases.
+- Dependencies are pinned in `package-lock.json`. There is no automated update bot, so the pinned mermaid-cli version is updated by hand when new releases appear.
